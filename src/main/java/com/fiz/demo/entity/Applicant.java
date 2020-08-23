@@ -11,8 +11,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.Type;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,9 +23,9 @@ import lombok.NoArgsConstructor;
 public class Applicant {
 
 	@Id
-	@Column(name = "ADAY_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	@Column(name = "ADAY_ID")
+	private Integer id;
 
 	@Column(name = "AD", length = 40)
 	private String name;
@@ -38,8 +36,20 @@ public class Applicant {
 	@Column(name = "NOT")
 	private String desciption;
 
-	@Column()
 	@Temporal(TemporalType.DATE)
+	@Column(name = "DOGUM_TARIHI")
 	private Date birth;
+
+	public void setName(String name) {
+		this.name = name.toLowerCase();
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname.toLowerCase();
+	}
+
+	public void setDesciption(String desciption) {
+		this.desciption = desciption.toLowerCase();
+	}
 
 }

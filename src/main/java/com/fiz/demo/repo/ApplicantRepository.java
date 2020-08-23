@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.fiz.demo.model.Applicant;
 
 @Repository
-public interface ApplicantRepository extends CrudRepository<Applicant, Integer> {
+public interface ApplicantRepository extends CrudRepository<Applicant, Long> {
 
 }

@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,26 +17,29 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tr_aday01")
+@Table(name = "`tr_aday01`")
 public class Applicant {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ADAY_ID")
-	private Integer id;
+	@Column(name = "`ADAY_ID`")
+	private Long id;
 
-	@Column(name = "AD", length = 40)
+	@Column(name = "`AD`", length = 40)
 	private String name;
 
-	@Column(name = "SOYAD", length = 40)
+	@Column(name = "`SOYAD`", length = 40)
 	private String surname;
 
-	@Column(name = "NOT")
+	@Column(name = "`NOT`")
 	private String desciption;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "DOGUM_TARIHI")
+	@Column(name = "`DOGUM_TARIHI`")
 	private Date birth;
+
+	// TODO enum düzenlenecek.
+	@Column(name = "`GORUSME_DURUM`")
+	private String status;
 
 	public void setName(String name) {
 		this.name = name.toLowerCase();

@@ -1,4 +1,4 @@
-package com.fiz.demo.entity;
+package com.fiz.demo.model;
 
 import java.sql.Date;
 

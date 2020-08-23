@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fiz.demo.entity.Applicant;
-import com.fiz.demo.repository.ApplicantRepository;
+import com.fiz.demo.model.Applicant;
+import com.fiz.demo.repo.ApplicantRepository;
 
 @RequestMapping
 @RestController

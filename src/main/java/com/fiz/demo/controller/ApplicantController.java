@@ -64,7 +64,7 @@ public class ApplicantController {
 			Applicant _applicant = applicantData.get();
 			_applicant.setName(applicant.getName());
 			_applicant.setSurname(applicant.getSurname());
-			_applicant.setDesciption(applicant.getDesciption());
+			_applicant.setDesciption(applicant.getDescription());
 			_applicant.setBirth(applicant.getBirth());
 			// TODO GORUSME_DURUM eklenecek.
 			return new ResponseEntity<>(repository.save(_applicant), HttpStatus.OK);

@@ -32,7 +32,7 @@ public class Applicant {
 	private String surname;
 
 	@Column(name = "`NOT`")
-	private String desciption;
+	private String description;
 
 	@Column(name = "`DOGUM_TARIHI`")
 	private Date birth;
@@ -49,8 +49,8 @@ public class Applicant {
 		this.surname = surname.toLowerCase();
 	}
 
-	public void setDesciption(String desciption) {
-		this.desciption = desciption.toLowerCase();
+	public void setDesciption(String description) {
+		this.description = description.toLowerCase();
 	}
 
 }

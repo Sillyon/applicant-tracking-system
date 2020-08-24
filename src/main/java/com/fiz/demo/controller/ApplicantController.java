@@ -40,6 +40,11 @@ public class ApplicantController {
 		return repository.findById(id).orElse(null);
 	}
 
+	@GetMapping("applicant/{name}")
+	public List<Applicant> findByAge(@PathVariable String name) {
+		return repository.findAllByName(name);
+	}
+
 	@PostMapping("/applicant")
 	public Applicant postApplicant(@RequestBody Applicant applicant) {
 		return repository.save(applicant);

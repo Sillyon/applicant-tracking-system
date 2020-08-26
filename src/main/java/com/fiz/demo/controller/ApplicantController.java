@@ -19,8 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fiz.demo.model.Applicant;
 import com.fiz.demo.repo.ApplicantRepository;
+import com.fiz.demo.exception.ResourceNotFoundException;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api")
 public class ApplicantController {
@@ -36,8 +37,10 @@ public class ApplicantController {
 	}
 
 	@GetMapping("/applicant/{id}")
-	public Applicant getApplicantById(@PathVariable Long id) {
-		return repository.findById(id).orElse(null);
+	public ResponseEntity<Applicant> getApplicantById(@PathVariable Long id) {
+		Applicant applicant = repository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Applicant not exist with id: " + id));
+		return ResponseEntity.ok(applicant);
 	}
 
 	@GetMapping("applicant/{name}")
@@ -66,6 +69,7 @@ public class ApplicantController {
 			_applicant.setSurname(applicant.getSurname());
 			_applicant.setDesciption(applicant.getDescription());
 			_applicant.setBirth(applicant.getBirth());
+			_applicant.setStatus(applicant.getStatus());
 			// TODO GORUSME_DURUM eklenecek.
 			return new ResponseEntity<>(repository.save(_applicant), HttpStatus.OK);
 		}

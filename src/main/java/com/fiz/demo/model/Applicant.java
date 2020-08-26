@@ -39,7 +39,7 @@ public class Applicant {
 
 	// TODO enum düzenlenecek.
 	@Column(name = "`GORUSME_DURUM`")
-	private String status;
+	private Status status;
 
 	public void setName(String name) {
 		this.name = name.toLowerCase();

@@ -36,30 +36,30 @@ public class ApplicantController {
 		return applicants;
 	}
 
-	@GetMapping("/applicant/{id}")
+	@GetMapping("/applicants/{id}")
 	public ResponseEntity<Applicant> getApplicantById(@PathVariable Long id) {
 		Applicant applicant = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Applicant not exist with id: " + id));
 		return ResponseEntity.ok(applicant);
 	}
 
-	@GetMapping("applicant/{name}")
+	@GetMapping("applicants/{name}")
 	public List<Applicant> findByAge(@PathVariable String name) {
 		return repository.findAllByName(name);
 	}
 
-	@PostMapping("/applicant")
+	@PostMapping("/applicants")
 	public Applicant postApplicant(@RequestBody Applicant applicant) {
 		return repository.save(applicant);
 	}
 
-	@DeleteMapping("/applicant/{id}")
+	@DeleteMapping("/applicants/{id}")
 	public ResponseEntity<String> deleteApplicant(@PathVariable Long id) {
 		repository.deleteById(id);
 		return new ResponseEntity<>("Applicant has been deleted!", HttpStatus.OK);
 	}
 
-	@PutMapping("/applicant/{id}")
+	@PutMapping("/applicants/{id}")
 	public ResponseEntity<Applicant> updateApplicant(@PathVariable Long id, @RequestBody Applicant applicant) {
 		Optional<Applicant> applicantData = repository.findById(id);
 
@@ -73,7 +73,7 @@ public class ApplicantController {
 			// TODO GORUSME_DURUM eklenecek.
 			return new ResponseEntity<>(repository.save(_applicant), HttpStatus.OK);
 		}
-		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		throw new ResourceNotFoundException("Applicant not exist with id: " + id);
 	}
 
 }

@@ -21,7 +21,7 @@ import com.fiz.demo.model.Applicant;
 import com.fiz.demo.repo.ApplicantRepository;
 import com.fiz.demo.exception.ResourceNotFoundException;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class ApplicantController {
@@ -36,15 +36,15 @@ public class ApplicantController {
 		return applicants;
 	}
 
-	@GetMapping("/applicants/{id}")
+	@GetMapping("/applicants/id={id}")
 	public ResponseEntity<Applicant> getApplicantById(@PathVariable Long id) {
 		Applicant applicant = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Applicant not exist with id: " + id));
 		return ResponseEntity.ok(applicant);
 	}
 
-	@GetMapping("applicants/{name}")
-	public List<Applicant> findByAge(@PathVariable String name) {
+	@GetMapping("applicants/name={name}")
+	public List<Applicant> findByName(@PathVariable String name) {
 		return repository.findAllByName(name);
 	}
 
@@ -53,13 +53,13 @@ public class ApplicantController {
 		return repository.save(applicant);
 	}
 
-	@DeleteMapping("/applicants/{id}")
+	@DeleteMapping("/applicants/id={id}")
 	public ResponseEntity<String> deleteApplicant(@PathVariable Long id) {
 		repository.deleteById(id);
 		return new ResponseEntity<>("Applicant has been deleted!", HttpStatus.OK);
 	}
 
-	@PutMapping("/applicants/{id}")
+	@PutMapping("/applicants/id={id}")
 	public ResponseEntity<Applicant> updateApplicant(@PathVariable Long id, @RequestBody Applicant applicant) {
 		Optional<Applicant> applicantData = repository.findById(id);
 
@@ -67,7 +67,7 @@ public class ApplicantController {
 			Applicant _applicant = applicantData.get();
 			_applicant.setName(applicant.getName());
 			_applicant.setSurname(applicant.getSurname());
-			_applicant.setDesciption(applicant.getDescription());
+			_applicant.setDescription(applicant.getDescription());
 			_applicant.setBirth(applicant.getBirth());
 			_applicant.setStatus(applicant.getStatus());
 			// TODO GORUSME_DURUM eklenecek.

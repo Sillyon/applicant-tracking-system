@@ -49,7 +49,7 @@ public class Applicant {
 		this.surname = surname.toLowerCase();
 	}
 
-	public void setDesciption(String description) {
+	public void setDescription(String description) {
 		this.description = description.toLowerCase();
 	}
 

@@ -70,7 +70,6 @@ public class ApplicantController {
 			_applicant.setDescription(applicant.getDescription());
 			_applicant.setBirth(applicant.getBirth());
 			_applicant.setStatus(applicant.getStatus());
-			// TODO GORUSME_DURUM eklenecek.
 			return new ResponseEntity<>(repository.save(_applicant), HttpStatus.OK);
 		}
 		throw new ResourceNotFoundException("Applicant not exist with id: " + id);

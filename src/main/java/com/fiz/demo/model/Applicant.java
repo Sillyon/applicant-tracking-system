@@ -37,7 +37,6 @@ public class Applicant {
 	@Column(name = "`DOGUM_TARIHI`")
 	private Date birth;
 
-	// TODO enum düzenlenecek.
 	@Column(name = "`GORUSME_DURUM`")
 	private Status status;
 
